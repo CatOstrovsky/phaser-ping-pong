@@ -29,7 +29,7 @@ export class Wellcome extends Phaser.Scene {
     Helper.DrawCoins(this);
     Helper.DrawBestScore(this);
 
-    this.keys = this.input.keyboard.addKeys('up,down');;
+    this.keys = this.input.keyboard.addKeys('up,down,shift');;
 
     this.drawMenu();
   }
@@ -59,6 +59,9 @@ export class Wellcome extends Phaser.Scene {
 
   }
 
+  actionMenuButton() : void {
+    //TODO: cases for all buttons and any actions
+  }
 
   lockBtns() : void {
     this.btnLocked = true;
@@ -75,6 +78,8 @@ export class Wellcome extends Phaser.Scene {
       }else if(this.keys.up.isDown) {
         this.setActiveMenu(this.activeMenuItem - 1)
         this.lockBtns()
+      }else if(this.keys.shift.isDown) {
+        this.actionMenuButton()
       }
 
     }
