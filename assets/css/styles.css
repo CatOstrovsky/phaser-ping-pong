@@ -1,0 +1,63 @@
+/**
+ * @author       CatOstrovsky <ska_live@mail.ru>
+ * @copyright    2018 web-panda
+ * @description  Basic page styles
+ * @license      CatOstrovsky
+ */
+body {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1f1f1f;
+    overflow: hidden;
+}
+body {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+body canvas {
+    box-shadow: 0px 0px 20px 0px rgba(251, 251, 251, 0.21);
+    border-radius: 25px;
+}
+#game {
+    padding: 20px;
+    background: #106d77;
+    border-radius: 20px;
+    padding-right: 120px;
+    position: relative;
+}
+
+#game:after {
+    content: "";
+    position: absolute;
+    right: 14%;
+    top: 10%;
+    transform: translateY(-50%) translateX(-20px);
+    width: 20px;
+    height: 20px;
+    background: #6f3a3a;
+    animation: beep .7s ease-in-out infinite;
+    border-radius: 50%;
+}
+
+#game:before {
+    content: "";
+    position: absolute;
+    right: 0%;
+    top: 10%;
+    width: 300px;
+    height: 100px;
+    background: url(/assets/images/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(90deg) translateX(39%) translateY(-85%);
+}
+@keyframes beep {
+ 0% { opacity: 1; }
+ 77% { opacity: 0; }
+}
