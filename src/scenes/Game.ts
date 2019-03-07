@@ -11,6 +11,7 @@ import Config from "../const/config"
 import Helper from "../classes/Helper"
 import Enemy from '../objects/Enemy'
 import ScoreManager from '../classes/ScoreManager'
+import CoinsManager from '../classes/CoinsManager'
 
 export class GameScene extends Phaser.Scene {
 
@@ -44,7 +45,7 @@ export class GameScene extends Phaser.Scene {
     this.scores = [0,0]
     this.GameScrore = []
     this.totalScoreObject = null
-    
+
     this.impact.world.setBounds(20, 60, Config.width - 40, Config.height - 80);
 
     Helper.DrawCoins(this);
@@ -116,8 +117,10 @@ export class GameScene extends Phaser.Scene {
     if(this.scores[player] >= 10) {
       if(player == 0) {
         alert("Вы проиграли!")
+        CoinsManager.coins = 50
       }else{
         alert("Вы победили!")
+        CoinsManager.coins = 100
       }
 
       this.scene.start("Menu")

@@ -24,7 +24,6 @@ export default class ScoreManager{
     if(!ScoreManager.bestScore || ScoreManager.bestScore < ScoreManager.score)
       ScoreManager.bestScore = ScoreManager.score;
 
-    console.log(ScoreManager.bestScore)
     ScoreManager.score = -(ScoreManager.score)
   }
 }
