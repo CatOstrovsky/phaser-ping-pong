@@ -3,7 +3,7 @@
 
 You can read article to learn more about this project here: [https://web-panda.ru](https://web-panda.ru/post/phaser-3-released-3).
 
-[---EXAMPLE HERE---](https://demo.web-panda.ru/ping-pong/) 
+[---DEMO HERE---](https://demo.web-panda.ru/ping-pong/) 
 
 ## Screnshots
 | | |
