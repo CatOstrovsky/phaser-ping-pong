@@ -7,7 +7,7 @@ export default class ScoreManager{
     return ScoreManager._score
   }
   public static set score(value:number) {
-    this.score += value
+    ScoreManager._score += value
   }
 
   protected static _bestScore: number = parseInt(window.localStorage.getItem(LOCALSTORAGE_BEST_SCORE))
@@ -17,12 +17,14 @@ export default class ScoreManager{
   }
   public static set bestScore(value: number) {
     this._bestScore = value
+    window.localStorage.setItem(LOCALSTORAGE_BEST_SCORE, `${this._bestScore}`)
   }
 
   public static EndGame() {
-    if(ScoreManager.bestScore < ScoreManager.score)
+    if(!ScoreManager.bestScore || ScoreManager.bestScore < ScoreManager.score)
       ScoreManager.bestScore = ScoreManager.score;
 
+    console.log(ScoreManager.bestScore)
     ScoreManager.score = -(ScoreManager.score)
   }
 }

@@ -10,6 +10,7 @@ interface GameSceneParams {
 import Config from "../const/config"
 import Helper from "../classes/Helper"
 import Enemy from '../objects/Enemy'
+import ScoreManager from '../classes/ScoreManager'
 
 export class GameScene extends Phaser.Scene {
 
@@ -17,8 +18,9 @@ export class GameScene extends Phaser.Scene {
   private GameScrore: Array<Phaser.GameObjects.DynamicBitmapText> = []
   private ball: Phaser.Physics.Impact.ImpactImage
   private player: Phaser.Physics.Impact.ImpactImage
-  private enemy: Enemy;
-  private scores:Array<any> = [0,0];
+  private enemy: Enemy
+  private scores:Array<any> = [0,0]
+  private totalScoreObject: Phaser.GameObjects.DynamicBitmapText
 
   private maxPlayerSpeed: number = 280
 
@@ -39,17 +41,18 @@ export class GameScene extends Phaser.Scene {
 
   create(params: GameSceneParams) : void {
     // reset local vars
-    this.scores = [0,0];
-    this.GameScrore = [];
-
+    this.scores = [0,0]
+    this.GameScrore = []
+    this.totalScoreObject = null
+    
     this.impact.world.setBounds(20, 60, Config.width - 40, Config.height - 80);
 
     Helper.DrawCoins(this);
     Helper.DrawBestScore(this);
 
     this.drawStage()
-    this.drawGameScore();
-
+    this.drawGameScore()
+    this.drawTotalScore()
 
     this.player = this.impact.add.image(50, (Config.height-80)/2, 'sofa').setRotation(1.55)
     this.player.setActiveCollision()
@@ -61,6 +64,13 @@ export class GameScene extends Phaser.Scene {
 
     this.enemy.maxSpeed += params.level * 80;
 
+  }
+
+  drawTotalScore() : void {
+    if(!this.totalScoreObject)
+      this.totalScoreObject = this.add.dynamicBitmapText( Config.width/2 , 20, 'joystix', "", 20).setOrigin(.5)
+
+    this.totalScoreObject.setText(`${ScoreManager.score}`)
   }
 
   drawGameScore() : void {
@@ -111,10 +121,14 @@ export class GameScene extends Phaser.Scene {
       }
 
       this.scene.start("Menu")
+      ScoreManager.EndGame();
     }
   }
 
   update(delta) : void {
+
+    ScoreManager.score = 1;
+    this.drawTotalScore()
 
     if(this.enemy) this.enemy.update(delta);
 

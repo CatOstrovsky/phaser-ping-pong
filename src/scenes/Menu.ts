@@ -24,7 +24,7 @@ export class Menu extends Phaser.Scene {
   create() : void {
     let frameSpaceBorder = 20;
 
-    this.add.dynamicBitmapText(Config.width/2, Config.height/2 - 80, 'joystix', 'пинг понг', 30).setOrigin(.5);
+    this.add.dynamicBitmapText(Config.width/2, Config.height/2 - 80, 'joystix', 'диванный футбол', 30).setOrigin(.5);
 
     Helper.DrawCoins(this);
     Helper.DrawBestScore(this);
