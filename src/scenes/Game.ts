@@ -99,15 +99,20 @@ export class GameScene extends Phaser.Scene {
 
   resetBall(velocityTo: number = -1) : void {
 
-    if(this.ball) this.ball.destroy();
+    if(this.ball) {
+      this.ball.destroy();
+      this.sound.play('auch')
+    }
 
     this.ball = this.impact.add.image( Config.width/2, (Config.height-80) / 2, 'ball')
     this.ball.setActiveCollision()
     this.ball.setBounce(1)
 
-    this.ball.setVelocity(velocityTo * 300, Phaser.Math.Between(-200, 200))
+    this.ball.setVelocity(velocityTo * 400, ([-300, -200, 200, 300])[Phaser.Math.Between(0,3)] )
 
     this.enemy.setBall(this.ball);
+
+    this.ball.setCollideCallback(() => this.sound.play('bump'), this)
   }
 
   addScore(player:number = 0) {
@@ -118,9 +123,11 @@ export class GameScene extends Phaser.Scene {
       if(player == 0) {
         alert("Вы проиграли!")
         CoinsManager.coins = 50
+        this.sound.play('lose')
       }else{
         alert("Вы победили!")
         CoinsManager.coins = 100
+        this.sound.play('win')
       }
 
       this.scene.start("Menu")
@@ -149,6 +156,7 @@ export class GameScene extends Phaser.Scene {
       this.addScore(0)
       this.resetBall(1)
     }
+
   }
 
 }

@@ -60,10 +60,12 @@ export class Level extends Phaser.Scene {
   }
 
   actionMenuButton() : void {
+    this.sound.play('select')
     this.scene.start("Game", {level: this.activeMenuItem});
   }
 
   lockBtns() : void {
+    this.sound.play('bump-1')
     this.btnLocked = true;
     setTimeout(() => this.btnLocked = false, 150);
   }

@@ -57,6 +57,7 @@ export class Shop extends Phaser.Scene {
   }
 
   lockBtns() : void {
+    this.sound.play('bump-1')
     this.btnLocked = true;
     setTimeout(() => this.btnLocked = false, 150);
   }
@@ -71,11 +72,14 @@ export class Shop extends Phaser.Scene {
   }
 
   buyItem() : void {
+    this.sound.play('select')
+    
     let item = this.items[this.activeMenuItem];
     if(CoinsManager.coins < item.price) {
       alert("Нужно больше денег!")
     }else{
       // CoinsManager.coins = -(item.price)
+      this.sound.play('cash')
       Helper.SetActiveHero(item.image)
       this.scene.start("Menu")
     }

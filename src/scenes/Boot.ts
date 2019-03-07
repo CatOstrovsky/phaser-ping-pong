@@ -14,6 +14,14 @@ export class Boot extends Phaser.Scene {
   }
 
   preload() : void {
+    this.load.audio('bump', ['assets/audio/bump.mp3']);
+    this.load.audio('bump-1', ['assets/audio/bump-1.mp3']);
+    this.load.audio('cash', ['assets/audio/cash.mp3']);
+    this.load.audio('select', ['assets/audio/select.mp3']);
+    this.load.audio('auch', ['assets/audio/auch.mp3']);
+    this.load.audio('lose', ['assets/audio/lose.mp3']);
+    this.load.audio('win', ['assets/audio/win.mp3']);
+
     this.load.image('coin', 'assets/images/coin.png')
 
     this.load.image('sofa', 'assets/images/sofa.png')
@@ -21,7 +29,7 @@ export class Boot extends Phaser.Scene {
     this.load.image('sofa_2', 'assets/images/sofa_2.png')
     this.load.image('sofa_3', 'assets/images/sofa_3.png')
     this.load.image('sofa_4', 'assets/images/sofa_4.png')
-    
+
     this.load.image('ball', 'assets/images/ball.png')
     this.load.image('arrow', 'assets/images/arrow.png')
     this.load.bitmapFont('joystix', 'assets/fonts/joystix.png', 'assets/fonts/joystix.fnt')
