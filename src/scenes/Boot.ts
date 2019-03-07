@@ -1,6 +1,6 @@
 /**
  * @author       CatOstrovsky <ska_live@mail.ru>
- * @copyright    2018 web-panda
+ * @copyright    2019 web-panda
  * @description  Boot game scene. Gift is preloader :)
  * @license      CatOstrovsky
  */
@@ -15,6 +15,8 @@ export class Boot extends Phaser.Scene {
 
   preload() : void {
     this.load.image('coin', 'assets/images/coin.png')
+    this.load.image('sofa', 'assets/images/sofa.png')
+    this.load.image('ball', 'assets/images/ball.png')
     this.load.image('arrow', 'assets/images/arrow.png')
     this.load.bitmapFont('joystix', 'assets/fonts/joystix.png', 'assets/fonts/joystix.fnt')
 
@@ -40,7 +42,7 @@ export class Boot extends Phaser.Scene {
 
   create() : void {
 
-  	this.scene.start('wellcome');
+  	this.scene.start('Menu');
 
   }
 

@@ -1,12 +1,12 @@
 /**
  * @author       CatOstrovsky <ska_live@mail.ru>
- * @copyright    2018 web-panda
+ * @copyright    2019 web-panda
  * @license      CatOstrovsky
  */
 import Config from "../const/config"
 import Helper from "../classes/Helper"
 
-export class Wellcome extends Phaser.Scene {
+export class Level extends Phaser.Scene {
 
   private menuButtons: Array<Phaser.GameObjects.DynamicBitmapText>  = [];
   private menuCaret: Phaser.GameObjects.Image;
@@ -17,37 +17,37 @@ export class Wellcome extends Phaser.Scene {
 
   constructor() {
     super({
-      key: "wellcome",
+      key: "Level",
     });
   }
 
   create() : void {
-    let frameSpaceBorder = 20;
-
-    this.add.dynamicBitmapText(Config.width/2, Config.height/2 - 80, 'joystix', 'пинг понг', 30).setOrigin(.5);
+    this.add.dynamicBitmapText(Config.width/2, Config.height/2 - 80, 'joystix', 'выберите сложность', 30).setOrigin(.5);
 
     Helper.DrawCoins(this);
     Helper.DrawBestScore(this);
 
-    this.keys = this.input.keyboard.addKeys('up,down,shift');;
+    this.keys = this.input.keyboard.addKeys('right,left,shift');
 
-    this.drawMenu();
+    this.drawLevels();
   }
 
-  drawMenu() : void {
-      let buttons = [
-        "Игра",
-        "Настройки",
-        "Магазин"
-      ]
+  drawLevels() : void {
+    let buttons = [
+      "Легко",
+      "Нормально",
+      "Сложно"
+    ]
 
-      buttons.forEach((el, index) => {
-        let item = this.add.dynamicBitmapText(Config.width/2, Config.height/2 + (index * 30), 'joystix', el, 20).setOrigin(.5);
-        this.menuButtons.push(item)
-      })
+    let lastX = 0;
+    buttons.forEach((el, index) => {
+      let item = this.add.dynamicBitmapText( 160 + lastX, Config.height/2 + 20, 'joystix', el, 20).setOrigin(0, .5);
+      this.menuButtons.push(item)
+      lastX += item.width + 50;
+    })
 
-      this.menuCaret = this.add.image(0, 0, 'arrow')
-      this.setActiveMenu(0)
+    this.menuCaret = this.add.image(0, 0, 'arrow').setRotation(4.7)
+    this.setActiveMenu(0)
   }
 
   setActiveMenu(id = 0) : void {
@@ -55,12 +55,12 @@ export class Wellcome extends Phaser.Scene {
     if(this.activeMenuItem < 0) this.activeMenuItem = this.menuButtons.length-1;
 
     let textObject = this.menuButtons[this.activeMenuItem];
-    this.menuCaret.setPosition(textObject.x - textObject.width/2 - 20, textObject.y);
+    this.menuCaret.setPosition(textObject.x + textObject.width / 2, textObject.y + 30);
 
   }
 
   actionMenuButton() : void {
-    //TODO: cases for all buttons and any actions
+    this.scene.start("Game", {level: this.activeMenuItem});
   }
 
   lockBtns() : void {
@@ -72,10 +72,10 @@ export class Wellcome extends Phaser.Scene {
 
     if(this.btnLocked == false) {
 
-      if(this.keys.down.isDown) {
+      if(this.keys.right.isDown) {
         this.setActiveMenu(this.activeMenuItem + 1)
         this.lockBtns()
-      }else if(this.keys.up.isDown) {
+      }else if(this.keys.left.isDown) {
         this.setActiveMenu(this.activeMenuItem - 1)
         this.lockBtns()
       }else if(this.keys.shift.isDown) {

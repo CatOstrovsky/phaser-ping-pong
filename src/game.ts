@@ -1,6 +1,6 @@
 /**
  * @author       CatOstrovsky <ska_live@mail.ru>
- * @copyright    2018 web-panda
+ * @copyright    2019 web-panda
  * @description  Setup game
  * @license      CatOstrovsky
  */
@@ -10,12 +10,14 @@
 
 import "phaser";
 import { Boot } from './scenes/Boot'
-import { Wellcome } from './scenes/Wellcome'
+import { Menu } from './scenes/Menu'
+import { Level } from './scenes/Level'
+import { GameScene } from './scenes/Game'
 import Config from './const/config'
 
 const config: GameConfig = {
   ...Config,
-  scene: [Boot, Wellcome]
+  scene: [Boot, Menu, Level, GameScene]
 };
 
 export class Game extends Phaser.Game {
