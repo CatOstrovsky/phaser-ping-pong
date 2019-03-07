@@ -1,5 +1,15 @@
 # Phaser 3 TypeScript pin-pong game example
-You can read more about this project [web-panda.ru](https://web-panda.ru/post/phaser-3-released-3)
+### WARNING. Only 18+
+
+You can read article to learn more about this project here: [https://web-panda.ru](https://web-panda.ru/post/phaser-3-released-3).
+
+[---EXAMPLE HERE---](https://demo.web-panda.ru/ping-pong/) 
+
+## Screnshots
+| | |
+|-|-|
+|![screen-1](http://demo.web-panda.ru/ping-pong/screens/sceen-2.jpg?v=1)|![screen-1](http://demo.web-panda.ru/ping-pong/screens/sceen-1.jpg)|
+|![screen-1](http://demo.web-panda.ru/ping-pong/screens/sceen-3.jpg)|![screen-1](http://demo.web-panda.ru/ping-pong/screens/sceen-4.jpg)|
 
 ## Requirements
 
