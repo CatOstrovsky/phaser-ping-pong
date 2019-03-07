@@ -11,13 +11,14 @@
 import "phaser";
 import { Boot } from './scenes/Boot'
 import { Menu } from './scenes/Menu'
+import { Shop } from './scenes/Shop'
 import { Level } from './scenes/Level'
 import { GameScene } from './scenes/Game'
 import Config from './const/config'
 
 const config: GameConfig = {
   ...Config,
-  scene: [Boot, Menu, Level, GameScene]
+  scene: [Boot, Menu, Level, GameScene, Shop]
 };
 
 export class Game extends Phaser.Game {

@@ -15,7 +15,13 @@ export class Boot extends Phaser.Scene {
 
   preload() : void {
     this.load.image('coin', 'assets/images/coin.png')
+
     this.load.image('sofa', 'assets/images/sofa.png')
+    this.load.image('sofa_1', 'assets/images/sofa_1.png')
+    this.load.image('sofa_2', 'assets/images/sofa_2.png')
+    this.load.image('sofa_3', 'assets/images/sofa_3.png')
+    this.load.image('sofa_4', 'assets/images/sofa_4.png')
+    
     this.load.image('ball', 'assets/images/ball.png')
     this.load.image('arrow', 'assets/images/arrow.png')
     this.load.bitmapFont('joystix', 'assets/fonts/joystix.png', 'assets/fonts/joystix.fnt')

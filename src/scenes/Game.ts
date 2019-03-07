@@ -55,7 +55,7 @@ export class GameScene extends Phaser.Scene {
     this.drawGameScore()
     this.drawTotalScore()
 
-    this.player = this.impact.add.image(50, (Config.height-80)/2, 'sofa').setRotation(1.55)
+    this.player = this.impact.add.image(50, (Config.height-80)/2, Helper.GetActiveHero()).setRotation(1.55)
     this.player.setActiveCollision()
     this.player.setFixedCollision()
 

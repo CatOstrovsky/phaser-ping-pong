@@ -8,7 +8,7 @@ export default class CoinsManager{
 
     return this._coins
   }
-  
+
   public static set coins(value: number) {
     if(!this._coins) this._coins = 0
 

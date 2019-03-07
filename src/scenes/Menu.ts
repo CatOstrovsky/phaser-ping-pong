@@ -37,7 +37,6 @@ export class Menu extends Phaser.Scene {
   drawMenu() : void {
       let buttons = [
         "Игра",
-        "Настройки",
         "Магазин"
       ]
 
@@ -65,10 +64,7 @@ export class Menu extends Phaser.Scene {
         this.scene.start("Level");
         break
       case 1:
-        alert("Настройки")
-        break
-      case 2:
-        alert("Магазин")
+        this.scene.start("Shop");
         break
     }
   }
