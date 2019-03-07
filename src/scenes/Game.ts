@@ -38,6 +38,10 @@ export class GameScene extends Phaser.Scene {
   }
 
   create(params: GameSceneParams) : void {
+    // reset local vars
+    this.scores = [0,0];
+    this.GameScrore = [];
+
     this.impact.world.setBounds(20, 60, Config.width - 40, Config.height - 80);
 
     Helper.DrawCoins(this);
